@@ -134,12 +134,12 @@ hi Search cterm=NONE ctermbg=LightYellow
 :noremap <F4> :set hlsearch! hlsearch?<CR>
 
 " Remove arrow key to force hjkl adoption
-inoremap jk <esc>
-nnoremap <Up> <nop>
-nnoremap <Down> <nop>
-nnoremap <Left> <nop>
-nnoremap <Right> <nop>
-inoremap <esc> <nop>
+"inoremap jk <esc>
+"nnoremap <Up> <nop>
+"nnoremap <Down> <nop>
+"nnoremap <Left> <nop>
+"nnoremap <Right> <nop>
+"inoremap <esc> <nop>
 
 " Switch tab
 nnoremap gt <nop>

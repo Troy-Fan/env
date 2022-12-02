@@ -37,10 +37,7 @@ export LESSOPEN=
 # Prompt
 #----------------------------------------------------------------
 source ~/${REPO_NAME}/ubuntu/source_script/git-prompt.sh
-info_color='\[\e[38;5;41m\]'
-git_color='\[\e[38;5;4m\]'
-reset_color='\[\e[0m\]'
-PS1=${info_color}'\u@[\h:\w] '${git_color}'$(__git_ps1 " (%s)")'${reset_color}'\n[\$]'
+PS1='\[\e[2m\][\D{%F %a %I:%M %P}]\[\e[22m\] \[\e[32m\]\u\[\e[0m\] @ \[\e[36m\]\h\[\e[0m\] : \w \[\e[91m\]$(__git_ps1 " (%s)")\[\e[00m\]\n\$ '
 
 #----------------------------------------------------------------
 # Misc
@@ -48,6 +45,17 @@ PS1=${info_color}'\u@[\h:\w] '${git_color}'$(__git_ps1 " (%s)")'${reset_color}'\
 # Don't put duplicate lines in the history. See bash man page
 export HISTCONTROL=ignoredups
 export EDITOR=vim
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# Set timezone
+export TZ="/usr/share/zoneinfo/Asia/Taipei"
+
+# Parse hostnames stated in .ssh/config
+for host in $(awk '/^Host/{if ($2!="*") print $2}' ~/.ssh/config); do
+    alias $host="ssh $host"
+done
 
 #Tool usage
 source ~/${REPO_NAME}/ubuntu/source_script/git-completion.bash
