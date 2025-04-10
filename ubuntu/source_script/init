@@ -46,8 +46,15 @@ PS1='\[\e[2m\][\D{%F %a %I:%M %P}]\[\e[22m\] \[\e[32m\]\u\[\e[0m\] @ \[\e[36m\]\
 export HISTCONTROL=ignoredups
 export EDITOR=vim
 
+# Unlimited history size
+export HISTSIZE=-1
+export HISTFILESIZE=-1
+
 # append to the history file, don't overwrite it
 shopt -s histappend
+
+# After each command, save and reload history
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # Set timezone
 export TZ="/usr/share/zoneinfo/Asia/Taipei"
